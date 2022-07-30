@@ -72,5 +72,5 @@ CREATE TABLE "creditCards" (
 	"expirationMonth" varchar(2) NOT NULL,
 	"expirationYear" varchar(4) NOT NULL,
 	password varchar(8) NOT NULL,
-	limit integer NOT NULL
+	"limit" integer NOT NULL
 );
