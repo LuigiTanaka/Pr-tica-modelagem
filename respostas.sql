@@ -51,4 +51,26 @@ CREATE TABLE "bankAccount" (
 	"closeDate" timestamp 
 );
 
---
+--transactions
+CREATE TABLE transactions (
+    id serial NOT NULL PRIMARY KEY,
+	"bankAccountId" integer REFERENCES "bankAccount"(id),
+	amount integer NOT NULL,
+	type text NOT NULL,
+	time time NOT NULL DEFAULT NOW(),
+	description text,
+	cancelled boolean NOT NULL DEFAULT false
+);
+
+--creditCards
+CREATE TABLE "creditCards" (
+    id serial NOT NULL PRIMARY KEY,
+	"bankAccountId" integer REFERENCES "bankAccount"(id),
+	name varchar(30) NOT NULL,
+	number varchar(16) NOT NULL UNIQUE,
+	"securityCode" varchar(3) NOT NULL,
+	"expirationMonth" varchar(2) NOT NULL,
+	"expirationYear" varchar(4) NOT NULL,
+	password varchar(8) NOT NULL,
+	limit integer NOT NULL
+);
